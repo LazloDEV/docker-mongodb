@@ -8,7 +8,7 @@ git remote add gitlab git@gitlab.com:LazloDEV/docker-mongodb.git
 
 git remote add bitbucket git@bitbucket.org:lazlo_dev/docker-mongodb.git
 
-git pushall  
+git pushall
 
 
 
