@@ -14,14 +14,21 @@ git pushall
 
 # Docker
 
+The following commands must be run in a Powershell terminal or in VS Code terminal:
+
+## Building container from customized image:
+
 docker build -t dbms-mongodb .
 
 docker run -d --rm -p 27017:27017 --name my-mongodb-1 --network my-bridge-net -e MONGO_INITDB_ROOT_PASSWORD=mypass dbms-mongodb
 
+## Minimum container based on official image:
+
 docker run -d --rm -p 27017:27017 --name my-mongodb-2 --network my-bridge-net mongodb/mongodb-community-server:7.0.1-ubi8
 
-docker run -d --rm -p 27017:27017 --name my-mongodb-3 --network my-bridge-net -e MONGO_INITDB_ROOT_USERNAME=mongo_admin -e MONGO_INITDB_ROOT_PASSWORD=mypass -e MONGO_INITDB_DATABASE=login_db -v C:/DBMS/Docker-MongoDB/volumes/initdb/init.js:/docker-entrypoint-initdb.d/init.js mongodb/mongodb-community-server:7.0.1-ubi8
+## Container based on official image:
 
+docker run -d --rm -p 27017:27017 --name my-mongodb-3 --network my-bridge-net -e MONGO_INITDB_ROOT_USERNAME=mongo_admin -e MONGO_INITDB_ROOT_PASSWORD=mypass -e MONGO_INITDB_DATABASE=login_db -v "$(pwd)/volumes/initdb/init.js:/docker-entrypoint-initdb.d/init.js" mongodb/mongodb-community-server:7.0.1-ubi8
 
 
 
